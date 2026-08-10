@@ -1,6 +1,0 @@
-backend/.env
-backend/erasmus_connect.db
-backend/uploads/
-backend/.venv/
-frontend/node_modules/
-frontend/dist/
