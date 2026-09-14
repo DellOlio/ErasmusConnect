@@ -18,7 +18,7 @@ from app.models import Comment, Like, Post, User
 Base.metadata.create_all(bind=engine)
 run_migrations()
 
-app = FastAPI()
+app = FastAPI(title="ErasMate")
 
 uploads_dir = Path(__file__).resolve().parent.parent / "uploads"
 uploads_dir.mkdir(exist_ok=True)
@@ -108,7 +108,7 @@ class LikeResponse(BaseModel):
     likes_count: int
 
 
-def upload_image(file_bytes: bytes, folder: str = "erasmus-connect") -> str:
+def upload_image(file_bytes: bytes, folder: str = "erasmate") -> str:
     filename = f"{folder.replace('/', '_')}_{uuid.uuid4().hex}.jpg"
     filepath = uploads_dir / filename
     filepath.write_bytes(file_bytes)
@@ -144,8 +144,9 @@ def post_to_json(post: Post, current_user: User) -> PostResponse:
 def root():
     return """
     <html>
+      <head><title>ErasMate</title></head>
       <body>
-        <p>BACKEND</p>
+        <p>ErasMate backend</p>
       </body>
     </html>
     """
@@ -244,7 +245,7 @@ async def upload_avatar(
 
     content = await file.read()
     try:
-        current_user.profile_image_url = upload_image(content, folder="erasmus-connect/avatars")
+        current_user.profile_image_url = upload_image(content, folder="erasmate/avatars")
     except Exception:
         raise HTTPException(status_code=503, detail="Image upload failed")
 
@@ -312,7 +313,7 @@ async def create_post(
             raise HTTPException(status_code=400, detail="File must be an image")
         file_bytes = await image.read()
         try:
-            image_url = upload_image(file_bytes, folder="erasmus-connect/posts")
+            image_url = upload_image(file_bytes, folder="erasmate/posts")
         except Exception:
             raise HTTPException(status_code=503, detail="Image upload failed")
 

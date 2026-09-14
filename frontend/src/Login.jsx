@@ -18,7 +18,7 @@ export default function Login({ onLogin }) {
 
   return (
     <div className="box center-box">
-      <h1>Erasmus Connect</h1>
+      <h1>ErasMate</h1>
       <p>Prijava</p>
       {error && <div className="error">{error}</div>}
       <form onSubmit={handleSubmit}>

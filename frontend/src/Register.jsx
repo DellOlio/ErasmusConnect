@@ -19,7 +19,7 @@ export default function Register({ onRegister }) {
 
   return (
     <div className="box center-box">
-      <h1>Erasmus Connect</h1>
+      <h1>ErasMate</h1>
       <p>Registracija</p>
       {error && <div className="error">{error}</div>}
       <form onSubmit={handleSubmit}>

@@ -12,7 +12,7 @@ import UserProfile from "./UserProfile";
 function Nav({ user, activeCity, onLogout }) {
   return (
     <nav>
-      <Link to="/"><b>Erasmus Connect</b></Link>
+      <Link to="/"><b>ErasMate</b></Link>
       <div className="links">
         {activeCity && (
           user.city_locked ? (
